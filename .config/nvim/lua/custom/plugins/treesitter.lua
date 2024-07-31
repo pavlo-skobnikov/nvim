@@ -10,6 +10,8 @@ return {
   event = 'BufEnter',
   build = ':TSUpdate',
   opts = {
+    -- Automatically install missing parsers when entering buffer.
+    auto_install = true,
     -- Parsers required for Treesitter to function.
     ensure_installed = {
       'c',
