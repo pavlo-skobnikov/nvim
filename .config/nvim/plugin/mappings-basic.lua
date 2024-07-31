@@ -21,9 +21,6 @@ vim.keymap.set(
   { desc = 'Highlight <cword>' }
 )
 
--- Easily insert from system clipboard in the INSERT mode.
-vim.keymap.set('i', '<C-S-i>', '<C-r>*', { desc = "Paste from system' clipboard" })
-
 -- Actions without copying into the default register.
 vim.keymap.set('v', '<Leader>D', '"_d', { desc = 'Delete into black hole register' })
 vim.keymap.set('v', '<Leader>P', '"_dP', { desc = 'Paste into black hole register' })
