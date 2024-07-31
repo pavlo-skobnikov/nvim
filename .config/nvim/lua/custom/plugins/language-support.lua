@@ -1,63 +1,121 @@
 ---@diagnostic disable: undefined-field
--- Language-specific plugins to that DE 👨💻
+-- Language-specific plugins for that outstanding Developer Experience™ 👨💻
 return {
   {
     'nvim-java/nvim-java',
     ft = { 'java', 'gradle' },
     dependencies = { 'neovim/nvim-lspconfig', 'folke/which-key.nvim', 'hrsh7th/nvim-cmp' },
-    keys = {
-      -- Project.
-      { '<Localleader>pb', function() require('java').build.build_workspace() end, desc = 'Project build' },
-      { '<Localleader>pr', function() require('java').runner.built_in.run_app {} end, desc = 'Run the application' },
-      { '<Localleader>pR', ':JavaRunnerRunMain<Space>', 'Run the application with arguments' },
-      { '<Localleader>ps', function() require('java').runner.built_in.stop_app() end, 'Stop the application' },
-      { '<Localleader>pt', function() require('java').built_in.toggle_logs() end, 'Toggle application logs' },
-      -- Configuration.
-      { '<Localleader>cd', function() require('java').dap.config_dap() end, desc = 'Force DAP reconfiguration' },
-      { '<Localleader>cp', function() require('java').profile.ui() end, 'Open the profiles UI' },
-      { '<Localleader>cr', function() require('java').settings.change_runtime() end, 'Change the JDK version' },
-      -- Test.
-      { '<Localleader>tc', function() require('java').test.run_current_class() end, desc = 'Run test class' },
-      { '<Localleader>tm', function() require('java').test.debug_current_class() end, 'Run test method' },
-      { '<Localleader>tC', function() require('java').test.run_current_method() end, 'Debug test class' },
-      { '<Localleader>tM', function() require('java').test.debug_current_method() end, 'Debug test method' },
-      {
-        '<Localleader>tl',
-        function() require('java').test.view_last_report() end,
-        'Open the last test report in a popup window',
-      },
-      -- Refactor.
-      {
-        '<Localleader>v',
-        function() require('java').refactor.extract_variable() end,
-        mode = { 'n', 'v' },
-        'Create a variable',
-      },
-      {
-        '<Localleader>V',
-        function() require('java').refactor.extract_variable_all_occurrence() end,
-        mode = { 'n', 'v' },
-        'Create a variable for all occurrences',
-      },
-      {
-        '<Localleader>c',
-        function() require('java').refactor.extract_constant() end,
-        mode = { 'n', 'v' },
-        'Create a constant',
-      },
-      {
-        '<Localleader>m',
-        function() require('java').refactor.extract_method() end,
-        mode = { 'n', 'v' },
-        'Create a method',
-      },
-      {
-        '<Localleader>f',
-        function() require('java').refactor.extract_field() end,
-        mode = { 'n', 'v' },
-        'Create a field',
-      },
-    },
+    keys = function(self, _)
+      return {
+        -- Project.
+        {
+          '<Localleader>pb',
+          function() require('java').build.build_workspace() end,
+          ft = self.ft,
+          desc = 'Project build',
+        },
+        {
+          '<Localleader>pr',
+          function() require('java').runner.built_in.run_app {} end,
+          ft = self.ft,
+          desc = 'Run the application',
+        },
+        { '<Localleader>pR', ':JavaRunnerRunMain<Space>', ft = self.ft, desc = 'Run the application with arguments' },
+        {
+          '<Localleader>ps',
+          function() require('java').runner.built_in.stop_app() end,
+          ft = self.ft,
+          desc = 'Stop the application',
+        },
+        {
+          '<Localleader>pt',
+          function() require('java').built_in.toggle_logs() end,
+          ft = self.ft,
+          desc = 'Toggle application logs',
+        },
+        -- Configuration.
+        {
+          '<Localleader>cd',
+          function() require('java').dap.config_dap() end,
+          ft = self.ft,
+          desc = 'Force DAP reconfiguration',
+        },
+        { '<Localleader>cp', function() require('java').profile.ui() end, ft = self.ft, desc = 'Open the profiles UI' },
+        {
+          '<Localleader>cr',
+          function() require('java').settings.change_runtime() end,
+          ft = self.ft,
+          desc = 'Change the JDK version',
+        },
+        -- Test.
+        {
+          '<Localleader>tc',
+          function() require('java').test.run_current_class() end,
+          ft = self.ft,
+          desc = 'Run test class',
+        },
+        {
+          '<Localleader>tm',
+          function() require('java').test.debug_current_class() end,
+          ft = self.ft,
+          desc = 'Run test method',
+        },
+        {
+          '<Localleader>tC',
+          function() require('java').test.run_current_method() end,
+          ft = self.ft,
+          desc = 'Debug test class',
+        },
+        {
+          '<Localleader>tM',
+          function() require('java').test.debug_current_method() end,
+          ft = self.ft,
+          desc = 'Debug test method',
+        },
+        {
+          '<Localleader>tl',
+          function() require('java').test.view_last_report() end,
+          ft = self.ft,
+          desc = 'Open the last test report in a popup window',
+        },
+        -- Refactor.
+        {
+          '<Localleader>v',
+          function() require('java').refactor.extract_variable() end,
+          mode = { 'n', 'v' },
+          ft = self.ft,
+          desc = 'Create a variable',
+        },
+        {
+          '<Localleader>V',
+          function() require('java').refactor.extract_variable_all_occurrence() end,
+          mode = { 'n', 'v' },
+          ft = self.ft,
+          desc = 'Create a variable for all occurrences',
+        },
+        {
+          '<Localleader>c',
+          function() require('java').refactor.extract_constant() end,
+          mode = { 'n', 'v' },
+          ft = self.ft,
+          desc = 'Create a constant',
+        },
+        {
+          '<Localleader>m',
+          function() require('java').refactor.extract_method() end,
+          mode = { 'n', 'v' },
+          ft = self.ft,
+          desc = 'Create a method',
+        },
+        {
+          '<Localleader>f',
+          function() require('java').refactor.extract_field() end,
+          mode = { 'n', 'v' },
+          ft = self.ft,
+          desc = 'Create a field',
+        },
+      }
+    end,
     config = function()
       -- Setup the plugin.
       require('java').setup()

@@ -1,6 +1,6 @@
 return {
   -- A weapon for a more sophisticated situation 👔
-  { 'julienvincent/nvim-paredit', event = { 'BufEnter *.clj', 'BufEnter *.cljs' }, opts = {} },
+  { 'julienvincent/nvim-paredit', ft = 'clojure', opts = {} },
   -- Replace things from the specified register 🪃
   { 'vim-scripts/ReplaceWithRegister', event = 'BufEnter' },
   -- Adds a text object representing the current indentation 🗻
