@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gR', builtin.lsp_references, create_options 'References')
     vim.keymap.set('n', 'gd', builtin.lsp_definitions, create_options 'Go to definition')
     vim.keymap.set('n', 'gC', vim.lsp.buf.declaration, create_options 'Go to declaration')
-    vim.keymap.set('n', 'gT', builtin.lsp_type_definitions, create_options 'Go to type definition')
+    vim.keymap.set('n', 'gD', builtin.lsp_type_definitions, create_options 'Go to type definition')
     vim.keymap.set('n', 'gI', builtin.lsp_implementations, create_options 'Go to implementation')
 
     -- Actions.
