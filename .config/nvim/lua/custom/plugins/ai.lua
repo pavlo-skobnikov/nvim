@@ -162,13 +162,13 @@ return {
       { '<C-g>gv', '<Cmd>GpVnew<Cr>', mode = { 'i' }, nowait = true, remap = false, desc = 'GpVnew' },
     },
     config = function()
-      require('gp').setup {}
+      require('gp').setup({})
 
-      require('which-key').add {
+      require('which-key').add({
         { '<C-g>g', mode = 'v', group = 'generate into new ..' },
         { '<C-g>g', mode = 'n', group = 'generate into new ..' },
         { '<C-g>g', mode = 'i', group = 'generate into new ..' },
-      }
+      })
     end,
   },
 }

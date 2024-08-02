@@ -13,7 +13,7 @@ return {
     config = function(_, opts)
       require('catppuccin').setup(opts)
 
-      vim.cmd 'colorscheme catppuccin'
+      vim.cmd('colorscheme catppuccin')
     end,
   },
   -- Auto-switch themes when `System Appearance` setting changes 🌞🌚
@@ -22,8 +22,8 @@ return {
     event = 'VeryLazy',
     opts = {
       update_interval = 1000,
-      set_light_mode = function() vim.cmd 'set background=light' end,
-      set_dark_mode = function() vim.cmd 'set background=dark' end,
+      set_light_mode = function() vim.cmd('set background=light') end,
+      set_dark_mode = function() vim.cmd('set background=dark') end,
     },
   },
 }

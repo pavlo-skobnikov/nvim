@@ -24,7 +24,7 @@ return {
     branch = 'harpoon2',
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = function()
-      local harpoon = require 'harpoon'
+      local harpoon = require('harpoon')
 
       return {
         -- Manage the list of files.

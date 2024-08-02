@@ -35,11 +35,11 @@ return {
       icons = { mappings = false },
     },
     config = function(_, opts)
-      local wk = require 'which-key'
+      local wk = require('which-key')
 
       wk.setup(opts)
 
-      wk.add {
+      wk.add({
         { '<leader>a', group = 'application' },
         { '<leader>am', group = 'mason' },
         { '<leader>at', group = 'treesitter' },
@@ -52,7 +52,7 @@ return {
         { 'gl', group = 'lsp' },
         { 'gr', group = 'replace' },
         { 'gs', group = 'symbols' },
-      }
+      })
     end,
   },
 }

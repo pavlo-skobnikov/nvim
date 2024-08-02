@@ -2,7 +2,7 @@
 
 -- Get the current git branch name as a component of the status line.
 local function get_git_branch_component()
-  local result = vim.fn.system 'git branch --show-current'
+  local result = vim.fn.system('git branch --show-current')
 
   if string.match(result, 'fatal') then return 'NO-GIT' end
 

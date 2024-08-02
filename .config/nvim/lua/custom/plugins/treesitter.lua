@@ -69,7 +69,7 @@ return {
     require('nvim-treesitter.configs').setup(opts)
 
     -- Repeating moves.
-    local ts_repeat = require 'nvim-treesitter.textobjects.repeatable_move'
+    local ts_repeat = require('nvim-treesitter.textobjects.repeatable_move')
 
     -- Repeat movement with ; and ,
     --  - ; => Goes to the direction you were moving.

@@ -8,16 +8,16 @@ return {
       { 'rcarriga/nvim-dap-ui', dependencies = 'nvim-neotest/nvim-nio' },
     },
     keys = function()
-      local dap = require 'dap'
-      local widgets = require 'dap.ui.widgets'
-      local dapui = require 'dapui'
+      local dap = require('dap')
+      local widgets = require('dap.ui.widgets')
+      local dapui = require('dapui')
 
       return {
         -- Breakpoints.
         { '<Leader>db', dap.toggle_breakpoint, desc = 'Toggle breakpoint' },
         {
           '<Leader>dp',
-          function() dap.set_breakpoint(nil, nil, vim.fn.input 'Log point message: ') end,
+          function() dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end,
           desc = 'Toggle print log breakpoint',
         },
         { '<Leader>df', dap.list_breakpoints, desc = 'Find breakpoints' },
@@ -44,7 +44,7 @@ return {
     end,
     config = function()
       -- Open DAP UI when starting to debug.
-      local dap, dapui = require 'dap', require 'dapui'
+      local dap, dapui = require('dap'), require('dapui')
 
       dap.listeners.before.attach.dapui_config = dapui.open
       dap.listeners.before.launch.dapui_config = dapui.open

@@ -1,1 +1,1 @@
-vim.cmd [[ SetTabSpaces 2 ]]
+vim.cmd([[ SetTabSpaces 2 ]])

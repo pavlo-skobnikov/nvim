@@ -1,7 +1,7 @@
 -- Clear highlights on escape.
 vim.keymap.set('n', '<Esc>', function()
-  vim.cmd ':noh'
-  vim.cmd ':call clearmatches()'
+  vim.cmd(':noh')
+  vim.cmd(':call clearmatches()')
   vim.lsp.buf.clear_references()
 end, { desc = 'Clear highlights and escape' })
 
@@ -17,7 +17,7 @@ vim.keymap.set('n', 'c<Space>', 'f<Space>diwi<Space>', { desc = 'Change extra wh
 vim.keymap.set(
   'n',
   'g*',
-  function() vim.fn.matchadd('Search', vim.fn.expand '<cword>') end,
+  function() vim.fn.matchadd('Search', vim.fn.expand('<cword>')) end,
   { desc = 'Highlight <cword>' }
 )
 
@@ -34,9 +34,10 @@ vim.keymap.set('v', ']<Space>', '<Esc>o<Esc>gv', { desc = 'Add line below' })
 -- Quick Lazy UI access.
 vim.keymap.set('n', '<Leader>al', ':Lazy<Cr>', { desc = 'Lazy UI', silent = true })
 
--- Source Neovim configuration files.
+-- Source and inspect Lua w/ the Neovim runtime.
 vim.keymap.set('n', '<Leader>as', ':source %<Cr>', { desc = 'Source file', silent = true })
 vim.keymap.set('v', '<Leader>as', ':source<Cr>', { desc = 'Source selection', silent = true })
+vim.keymap.set('v', '<Leader>ai', 'y:lua print(vim.inspect(<C-r>*))<Cr>', { desc = 'Inspect', silent = true })
 
 -- Work w/ Neovim's Treesitter.
 vim.keymap.set('n', '<Leader>ati', ':Inspect<Cr>', { desc = 'Inspect element in Treesitter' })

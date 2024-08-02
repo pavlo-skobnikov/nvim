@@ -9,6 +9,6 @@ return {
       lua = { 'stylua' },
     },
   },
-  keys = { { '<leader>=', function() require('conform').format {} end, desc = 'Format', mode = { 'n', 'v' } } },
+  keys = { { '<leader>=', function() require('conform').format({}) end, desc = 'Format', mode = { 'n', 'v' } } },
   init = function() vim.o.formatexpr = "v:lua.require'conform'.formatexpr()" end,
 }

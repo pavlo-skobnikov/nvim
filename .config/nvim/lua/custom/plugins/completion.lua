@@ -9,7 +9,7 @@ return {
         'L3MON4D3/LuaSnip',
         build = 'make install_jsregexp',
         config = function()
-          local ls = require 'luasnip'
+          local ls = require('luasnip')
 
           vim.snippet.expand = ls.lsp_expand
 
@@ -38,7 +38,7 @@ return {
 
           vim.snippet.stop = ls.unlink_current
 
-          ls.config.set_config { history = true, updateevents = 'TextChanged,TextChangedI', override_builtin = true }
+          ls.config.set_config({ history = true, updateevents = 'TextChanged,TextChangedI', override_builtin = true })
 
           -- Load custom snippet definition files.
           for _, ft_path in ipairs(vim.api.nvim_get_runtime_file('lua/custom/snippets/*.lua', true)) do
@@ -49,14 +49,14 @@ return {
           vim.keymap.set(
             { 'i', 's' },
             '<C-k>',
-            function() return vim.snippet.active { direction = 1 } and vim.snippet.jump(1) end,
+            function() return vim.snippet.active({ direction = 1 }) and vim.snippet.jump(1) end,
             { silent = true }
           )
 
           vim.keymap.set(
             { 'i', 's' },
             '<C-j>',
-            function() return vim.snippet.active { direction = -1 } and vim.snippet.jump(-1) end,
+            function() return vim.snippet.active({ direction = -1 }) and vim.snippet.jump(-1) end,
             { silent = true }
           )
         end,
@@ -74,26 +74,26 @@ return {
     event = 'InsertEnter',
     init = function()
       vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
-      vim.opt.shortmess:append 'c'
+      vim.opt.shortmess:append('c')
     end,
     config = function()
-      local cmp = require 'cmp'
+      local cmp = require('cmp')
 
-      cmp.setup {
-        formatting = { format = require('lspkind').cmp_format {} },
+      cmp.setup({
+        formatting = { format = require('lspkind').cmp_format({}) },
         sources = { { name = 'nvim_lsp' }, { name = 'path' }, { name = 'buffer' } },
         mapping = {
-          ['<C-n>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-          ['<C-p>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+          ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
           ['<C-y>'] = cmp.mapping(
-            cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true },
+            cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true }),
             { 'i', 'c' }
           ),
         },
 
         -- Enable luasnip to handle snippet expansion for nvim-cmp
         snippet = { expand = function(args) vim.snippet.expand(args.body) end },
-      }
+      })
 
       -- [[ Sources configuration ]]
       cmp.setup.filetype('gitcommit', { sources = cmp.config.sources({ { name = 'git' } }, { { name = 'buffer' } }) })

@@ -19,8 +19,8 @@ return {
     opts = function()
       return {
         on_attach = function(bufnr)
-          local gitsigns = require 'gitsigns'
-          local ts_repeat = require 'nvim-treesitter.textobjects.repeatable_move'
+          local gitsigns = require('gitsigns')
+          local ts_repeat = require('nvim-treesitter.textobjects.repeatable_move')
 
           -- Set buffer for `vim.keymap.set` options.
           local function create_opts(desc) return { desc = desc, buffer = bufnr } end
@@ -29,7 +29,7 @@ return {
           local function get_move_hunk_fn(lhs, direction)
             return function()
               if vim.wo.diff then
-                vim.cmd.normal { lhs, bang = true }
+                vim.cmd.normal({ lhs, bang = true })
               else
                 gitsigns.nav_hunk(direction)
               end
@@ -39,18 +39,18 @@ return {
           local next_hunk_repeat, prev_hunk_repeat =
             ts_repeat.make_repeatable_move_pair(get_move_hunk_fn(']c', 'next'), get_move_hunk_fn('[c', 'prev'))
 
-          vim.keymap.set('n', ']c', next_hunk_repeat, create_opts 'Next change')
-          vim.keymap.set('n', '[c', prev_hunk_repeat, create_opts 'Previous change')
+          vim.keymap.set('n', ']c', next_hunk_repeat, create_opts('Next change'))
+          vim.keymap.set('n', '[c', prev_hunk_repeat, create_opts('Previous change'))
 
           -- Actions.
-          vim.keymap.set('n', '<leader>hs', gitsigns.stage_hunk, create_opts 'Stage hunk')
-          vim.keymap.set('n', '<leader>hS', gitsigns.stage_buffer, create_opts 'Stage buffer')
-          vim.keymap.set('n', '<leader>hu', gitsigns.undo_stage_hunk, create_opts 'Undo stage hunk')
-          vim.keymap.set('n', '<leader>hr', gitsigns.reset_hunk, create_opts 'Reset hunk')
-          vim.keymap.set('n', '<leader>hR', gitsigns.reset_buffer, create_opts 'Reset buffer')
-          vim.keymap.set('n', '<leader>hp', gitsigns.preview_hunk, create_opts 'Preview change')
-          vim.keymap.set('n', '<leader>hd', gitsigns.diffthis, create_opts 'Diff this')
-          vim.keymap.set('n', '<leader>ht', gitsigns.toggle_deleted, create_opts 'Toggle deleted')
+          vim.keymap.set('n', '<leader>hs', gitsigns.stage_hunk, create_opts('Stage hunk'))
+          vim.keymap.set('n', '<leader>hS', gitsigns.stage_buffer, create_opts('Stage buffer'))
+          vim.keymap.set('n', '<leader>hu', gitsigns.undo_stage_hunk, create_opts('Undo stage hunk'))
+          vim.keymap.set('n', '<leader>hr', gitsigns.reset_hunk, create_opts('Reset hunk'))
+          vim.keymap.set('n', '<leader>hR', gitsigns.reset_buffer, create_opts('Reset buffer'))
+          vim.keymap.set('n', '<leader>hp', gitsigns.preview_hunk, create_opts('Preview change'))
+          vim.keymap.set('n', '<leader>hd', gitsigns.diffthis, create_opts('Diff this'))
+          vim.keymap.set('n', '<leader>ht', gitsigns.toggle_deleted, create_opts('Toggle deleted'))
 
           -- Define hunk text object.
           vim.keymap.set({ 'o', 'x' }, 'ih', ':<C-u>Gitsigns select_hunk<CR>')
