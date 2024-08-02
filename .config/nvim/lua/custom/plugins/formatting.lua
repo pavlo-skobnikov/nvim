@@ -7,6 +7,7 @@ return {
     format_on_save = { timeout_ms = 500 },
     formatters_by_ft = {
       lua = { 'stylua' },
+      markdown = { 'prettier' },
     },
   },
   keys = { { '<leader>=', function() require('conform').format({}) end, desc = 'Format', mode = { 'n', 'v' } } },
