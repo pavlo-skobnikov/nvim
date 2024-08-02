@@ -16,7 +16,7 @@ return {
         },
         {
           '<Localleader>pr',
-          function() require('java').runner.built_in.run_app {} end,
+          function() require('java').runner.built_in.run_app({}) end,
           ft = self.ft,
           desc = 'Run the application',
         },
@@ -121,16 +121,16 @@ return {
       require('java').setup()
 
       -- Set the language server up w/ capabilities.
-      require('lspconfig').jdtls.setup {
+      require('lspconfig').jdtls.setup({
         capabilities = require('cmp_nvim_lsp').default_capabilities(),
-      }
+      })
 
       -- Add key groups for the plugin mappings.
-      require('which-key').add {
+      require('which-key').add({
         { '<Localleader>p', group = 'project' },
         { '<Localleader>c', group = 'configure' },
         { '<Localleader>t', group = 'test' },
-      }
+      })
     end,
   },
   {
@@ -143,23 +143,26 @@ return {
     },
     ft = { 'scala', 'sbt' },
     opts = function()
-      local metals = require 'metals'
+      local metals = require('metals')
 
       local configuration = metals.bare_config()
 
       configuration.settings = {
         showImplicitArguments = true,
-        init_options = {
-          -- Use `fidget.nvim` to show LSP status and notifications
-          statusBarProvider = 'off',
-        },
-        -- Set the language server up w/ capabilities.
-        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+        showImplicitConversionsAndClasses = true,
+        showInferredType = true,
       }
 
+      configuration.init_options = {
+        -- Use `fidget.nvim` to show LSP status and notifications
+        statusBarProvider = 'off',
+      }
+      -- Set the language server up w/ capabilities.
+      configuration.capabilities = require('cmp_nvim_lsp').default_capabilities()
+
       configuration.on_attach = function(_, _)
-        local telescope = require 'telescope'
-        local tvp = require 'metals.tvp'
+        local telescope = require('telescope')
+        local tvp = require('metals.tvp')
 
         -- Configure DAP for Scala.
         -- NOTE: If `jvmOptions`, `args`, or `envFile` is required, then creating customer DAP
@@ -203,7 +206,7 @@ return {
     end,
     config = function()
       -- Add key groups for the plugin mappings.
-      require('which-key').add {
+      require('which-key').add({
         { '<Localleader>c', group = 'connect' },
         { '<Localleader>e', group = 'evaluate' },
         { '<Localleader>ec', group = 'comment' },
@@ -213,7 +216,7 @@ return {
         { '<Localleader>s', group = 'sessions' },
         { '<Localleader>t', group = 'tests' },
         { '<Localleader>v', group = 'variables' },
-      }
+      })
     end,
   },
 }
