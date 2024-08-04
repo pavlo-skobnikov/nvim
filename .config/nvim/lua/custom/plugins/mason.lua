@@ -20,6 +20,9 @@ return {
   opts = {
     -- Tools that must be installed.
     ensure_installed = {
+      -- Shell.
+      'bash-language-server',
+      'beautysh',
       -- Lua.
       'lua-language-server',
       'stylua',
@@ -33,7 +36,6 @@ return {
       -- Misc.
       'prettierd',
     },
-
     -- Don't auto-update tool packages.
     auto_update = false,
     -- Perform auto-installation/-update of tools when Neovim starts up.
