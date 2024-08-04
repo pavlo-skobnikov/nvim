@@ -5,6 +5,8 @@ return {
   dependencies = {
     -- LSP clients, all ready to be used 🗣️
     'neovim/nvim-lspconfig',
+    -- Easy configuration for LSP servers 🛠️
+    { 'folke/neoconf.nvim', opts = {} },
     -- Show the function signature as you type 🆎
     { 'ray-x/lsp_signature.nvim', opts = {} },
     -- LSP status and notifications.
