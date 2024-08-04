@@ -14,7 +14,7 @@ local function set_status_line()
   vim.opt.statusline = '%f  %r%m%=' .. '%y' .. '  ' .. get_git_branch_component() .. '  ' .. '%l,%c    %P'
 end
 
-vim.api.nvim_create_autocmd({ 'BufEnter', 'DiagnosticChanged' }, {
+vim.api.nvim_create_autocmd('BufEnter', {
   group = vim.api.nvim_create_augroup('UpdateStatusLineWithDynamicData', { clear = true }),
   pattern = { '*' },
   callback = set_status_line,

@@ -1,4 +1,4 @@
----@diagnostic disable-next-line: duplicate-set-field
+---@diagnostic disable: duplicate-set-field
 -- It's not you, it's the completion engine 💔
 return {
   {

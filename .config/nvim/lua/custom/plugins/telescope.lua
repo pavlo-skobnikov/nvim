@@ -11,12 +11,12 @@ return {
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   },
   keys = function()
-    local builtin = require 'telescope.builtin'
+    local builtin = require('telescope.builtin')
 
     return {
       { '<C-s>', builtin.current_buffer_fuzzy_find, desc = 'Fuzzy search in buffer' },
       { '<Leader>,', builtin.buffers, desc = 'Switch buffers' },
-      { '<Leader>.', function() builtin.find_files { hidden = true } end, desc = 'Search files' },
+      { '<Leader>.', function() builtin.find_files({ hidden = true }) end, desc = 'Search files' },
       { '<Leader>/', builtin.live_grep, desc = 'Grep files' },
       { '<Leader>:', builtin.commands, desc = 'Search and execute commands' },
       { '<Leader>q', builtin.quickfix, desc = 'Quickfix list' },
@@ -35,7 +35,7 @@ return {
       { '<Leader>fr', builtin.oldfiles, desc = 'Find recent files' },
       {
         '<Leader>ff',
-        function() builtin.find_files { hidden = true, no_ignore = true } end,
+        function() builtin.find_files({ hidden = true, no_ignore = true }) end,
         desc = 'Search all files',
       },
     }
@@ -61,11 +61,11 @@ return {
     extensions = { fzf = {} },
   },
   config = function(_, opts)
-    local telescope = require 'telescope'
+    local telescope = require('telescope')
 
     telescope.setup(opts)
 
-    telescope.load_extension 'fzf'
-    telescope.load_extension 'ui-select'
+    telescope.load_extension('fzf')
+    telescope.load_extension('ui-select')
   end,
 }
