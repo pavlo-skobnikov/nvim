@@ -1,7 +1,7 @@
 -- LSP extravaganza 🎉
 return {
   'williamboman/mason-lspconfig.nvim',
-  event = 'InsertEnter',
+  event = 'VeryLazy',
   dependencies = {
     -- LSP clients, all ready to be used 🗣️
     'neovim/nvim-lspconfig',
