@@ -7,22 +7,21 @@ return {
     'antoinemadec/FixCursorHold.nvim',
     'nvim-treesitter/nvim-treesitter',
     'rcasia/neotest-java',
+    'stevanmilic/neotest-scala',
   },
-  keys = function()
-    local neotest = require('neotest')
-
-    return {
-      { '<Leader>rt', neotest.run.run, desc = 'Run nearest test' },
-      { '<Leader>rf', function() neotest.run.run(vim.fn.expand('%')) end, desc = 'Run tests in file' },
-      { '<Leader>rd', function() neotest.run.run({ strategy = 'dap' }) end, desc = 'Debug nearest test' },
-      { '<Leader>rs', neotest.run.stop, desc = 'Stop the nearest test' },
-      { '<Leader>ra', neotest.run.attach, desc = 'Attach to the nearest test' },
-    }
+  keys = {
+    { '<Leader>rt', function() require('neotest').run.run() end, desc = 'Run nearest test' },
+    { '<Leader>rf', function() require('neotest').run.run(vim.fn.expand('%')) end, desc = 'Run tests in file' },
+    { '<Leader>rd', function() require('neotest').run.run({ strategy = 'dap' }) end, desc = 'Debug nearest test' },
+    { '<Leader>rs', function() require('neotest').run.stop() end, desc = 'Stop the nearest test' },
+    { '<Leader>ra', function() require('neotest').run.attach() end, desc = 'Attach to the nearest test' },
+  },
+  config = function()
+    require('neotest').setup({
+      adapters = {
+        require('neotest-java'),
+        require('neotest-scala'),
+      },
+    })
   end,
-  opts = {
-    adapters = {
-      require('neotest-java'),
-      require('neotest-scala'),
-    },
-  },
 }
