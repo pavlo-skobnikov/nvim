@@ -21,7 +21,7 @@ vim.opt.runtimepath:prepend(lazypath)
 
 -- Load custom plugins.
 require('lazy').setup({
-  spec = 'custom/plugins',
+  spec = 'custom',
   change_detection = { notify = false },
-  defaults = { lazy = true },
+  defaults = { lazy = false },
 })

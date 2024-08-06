@@ -1,5 +1,6 @@
 local options = {
   -- [[ General configurations ]]
+
   -- The encoding written to a file.
   fileencoding = 'utf-8',
   -- Use the system clipboard as the main neovim clipboard.
@@ -9,7 +10,7 @@ local options = {
   -- Set term gui colors (most terminals support this).
   termguicolors = true,
   -- Time to wait for a mapped sequence to complete (in milliseconds).
-  timeoutlen = 200,
+  timeoutlen = 500,
   -- Flags for short messages.
   shortmess = 'filnxtToOFc',
   -- Which "horizontal" keys are allowed to travel to prev/next line.
@@ -20,6 +21,7 @@ local options = {
   wildmode = 'list:longest,full',
 
   -- [[ Auto-created files by neovim ]]
+
   -- Don't create a backup file.
   backup = false,
   -- Creates a swapfile.
@@ -30,18 +32,21 @@ local options = {
   undofile = true,
 
   -- [[ Searching ]]
+
   -- Ignore case in searches.
   ignorecase = true,
   -- Use smart case in searches.
   smartcase = true,
 
   -- [[ Splits ]]
+
   -- Force all horizontal splits to go below current window.
   splitbelow = true,
   -- Force all vertical splits to go to the right of current window.
   splitright = true,
 
   -- [[ Indentation ]]
+
   -- Convert tabs to spaces.
   expandtab = true,
   -- How much to (de-)indent when using `<` && `>` operators.
@@ -61,12 +66,14 @@ local options = {
   relativenumber = true,
 
   -- [[ Text wrapping ]]
+
   -- Don't soft-wrap lines.
   wrap = false,
   -- Don't split words when wrapping.
   linebreak = true,
 
   -- [[ Hidden characters ]]
+
   -- Enable displaying hidden characters.
   list = true,
   -- Define which hidden characters to display and their respective symbols.
@@ -79,12 +86,14 @@ local options = {
   },
 
   -- [[ Scroll-off ]]
+
   -- Minimal number of screen lines to keep above and below the cursor.
   scrolloff = 8,
   -- Minimal number of screen columns either side of cursor if wrap is `false`.
   sidescrolloff = 8,
 
   -- [[ Folds ]]
+
   -- Set the the default folded level nesting to be high i.e. most things are unfolded.
   foldlevel = 20,
   -- Define folds by expressions.
